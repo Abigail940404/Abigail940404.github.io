@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog-logo.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog-logo.jpg?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="此乃干货没有什么是一个typeof解决不了的如果不行那就再加一个instanceof 1234567891011121314151617181920var num = 1234;var str = &quot;qwer&quot;;var b = true;var arr = [1,2,3];var f = function()&amp;#123;    return &quot;f&quot;;&amp;#125;var obj = &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="类型判断">
+<meta property="og:url" content="http://yoursite.com/2018/10/14/类型判断/index.html">
+<meta property="og:site_name" content="校长的奇妙冒险">
+<meta property="og:description" content="此乃干货没有什么是一个typeof解决不了的如果不行那就再加一个instanceof 1234567891011121314151617181920var num = 1234;var str = &quot;qwer&quot;;var b = true;var arr = [1,2,3];var f = function()&amp;#123;    return &quot;f&quot;;&amp;#125;var obj = &amp;#123;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-14T10:49:40.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="类型判断">
+<meta name="twitter:description" content="此乃干货没有什么是一个typeof解决不了的如果不行那就再加一个instanceof 1234567891011121314151617181920var num = 1234;var str = &quot;qwer&quot;;var b = true;var arr = [1,2,3];var f = function()&amp;#123;    return &quot;f&quot;;&amp;#125;var obj = &amp;#123;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/14/类型判断/"/>
+
+
+
+
+
+  <title>类型判断 | 校长的奇妙冒险</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">校长的奇妙冒险</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">だが断る</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/14/类型判断/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="校长">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="校长的奇妙冒险">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">类型判断</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-14T16:06:32+08:00">
+                2018-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>此乃干货<br>没有什么是一个typeof解决不了的<br>如果不行<br>那就再加一个instanceof</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">1234</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"qwer"</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"f"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">123</span>,</span><br><span class="line">    b: &#123;</span><br><span class="line">        c: <span class="string">"qwer"</span>,</span><br><span class="line">        d: &#123;</span><br><span class="line">            rd: num</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> n = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> u = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">var</span> s = <span class="built_in">Symbol</span>(<span class="string">"sym"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="typeof判断"><a href="#typeof判断" class="headerlink" title="typeof判断"></a>typeof判断</h2><p><strong>缺点：array和null对应的是object</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);<span class="comment">//"number"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> str);<span class="comment">//"string"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b);<span class="comment">//"boolean"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> arr);<span class="comment">//"object"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> f);<span class="comment">//"function"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj);<span class="comment">//"object"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> n);<span class="comment">//"object"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> u);<span class="comment">//"undefined"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> s);<span class="comment">//"symbol"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="instanceof判断变量是否为某个对象的实例"><a href="#instanceof判断变量是否为某个对象的实例" class="headerlink" title="instanceof判断变量是否为某个对象的实例"></a>instanceof判断变量是否为某个对象的实例</h2><p><strong>缺点：①字面量（即不用new）创建的number、string和boolean型无法正确检测</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(num <span class="keyword">instanceof</span> <span class="built_in">Number</span>);<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(str <span class="keyword">instanceof</span> <span class="built_in">String</span>);<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(b <span class="keyword">instanceof</span> <span class="built_in">Boolean</span>);<span class="comment">//false</span></span><br></pre></td></tr></table></figure></p>
+<p>但是使用new形式创建出的三者结果均为true<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1234</span>);</span><br><span class="line"><span class="keyword">var</span> str1 = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"qwer"</span>);</span><br><span class="line"><span class="keyword">var</span> b1 = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>);</span><br><span class="line"><span class="built_in">console</span>.log(num1 <span class="keyword">instanceof</span> <span class="built_in">Number</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(str1 <span class="keyword">instanceof</span> <span class="built_in">String</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(b1 <span class="keyword">instanceof</span> <span class="built_in">Boolean</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>②null、undefined和symbol无法正确检测</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(n <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(u <span class="keyword">instanceof</span> <span class="built_in">Object</span>);<span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(s <span class="keyword">instanceof</span> <span class="built_in">Symbol</span>);<span class="comment">//false</span></span><br></pre></td></tr></table></figure></p>
+<p>但是可以将s再用new的形式创建出来，可以正确检测。这点后续要深挖啊，感觉symbol是个大坑 = =<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> <span class="built_in">Object</span>(s);</span><br><span class="line"><span class="built_in">console</span>.log(s1 <span class="keyword">instanceof</span> <span class="built_in">Symbol</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<p>其他都是可以通过这种方式进行检测的~感觉也没剩下啥了 = =<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(arr.constructor === <span class="built_in">Array</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(f.constructor === <span class="built_in">Function</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.constructor === <span class="built_in">Object</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="constructor构造函数检测法"><a href="#constructor构造函数检测法" class="headerlink" title="constructor构造函数检测法"></a>constructor构造函数检测法</h2><p><strong>缺点：①null和undefined会报错，无法使用这种方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(n.constructor === <span class="built_in">Object</span>);<span class="comment">//出错</span></span><br><span class="line"><span class="built_in">console</span>.log(u.constructor === <span class="built_in">Object</span>);<span class="comment">//出错</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>②不保险，因为可以被随意更改</strong><br>在不被更改的原始情况下，其他的还是蛮好用的~<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(num.constructor === <span class="built_in">Number</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(str.constructor === <span class="built_in">String</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(b.constructor === <span class="built_in">Boolean</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.constructor === <span class="built_in">Array</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(f.constructor === <span class="built_in">Function</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.constructor === <span class="built_in">Object</span>);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(s.constructor === <span class="built_in">Symbol</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Object-prototype-toString-call-最好用"><a href="#Object-prototype-toString-call-最好用" class="headerlink" title="Object.prototype.toString.call()最好用"></a>Object.prototype.toString.call()最好用</h2><p><strong>缺点：可能就是没有缺点吧</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(num));<span class="comment">//"[object Number]"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(str));<span class="comment">//"[object String]"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(b));<span class="comment">//"[object Boolean]"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(arr));<span class="comment">//"[object Array]"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(f));<span class="comment">//"[object Function]"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(obj));<span class="comment">//"[object Object]"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(n));<span class="comment">//"[object Null]"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(u));<span class="comment">//"[object Undefined]"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.toString.call(s));<span class="comment">//"[object Symbol]"</span></span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="校长" />
+            
+              <p class="site-author-name" itemprop="name">校长</p>
+              <p class="site-description motion-element" itemprop="description">吃好喝好，长生不老</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#typeof判断"><span class="nav-number">1.</span> <span class="nav-text">typeof判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#instanceof判断变量是否为某个对象的实例"><span class="nav-number">2.</span> <span class="nav-text">instanceof判断变量是否为某个对象的实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#constructor构造函数检测法"><span class="nav-number">3.</span> <span class="nav-text">constructor构造函数检测法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-prototype-toString-call-最好用"><span class="nav-number">4.</span> <span class="nav-text">Object.prototype.toString.call()最好用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-paw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">校长</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+/body>
+</html>
