@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/blog-logo.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/blog-logo.jpg?v=5.1.4">
+
+
+
+
+
+
+  <meta name="keywords" content="很硬," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="去实习的公司三面时大leader问了关于请求头和响应头的问题，可能他觉得通信专业对于计算机网络应该都很精通吧…… 但是我答得很不好，所以回家之后整理了一下，发现控制台好多东西都是只到表面啊，一往深了问我就😔 请求头 Connection: keep-alive  keep-alive表示使一次TCP连接为同一用户的多次请求服务，提高了响应速度。比如图片、js、css、html都在同一台服务器上，">
+<meta name="keywords" content="很硬">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="http://yoursite.com/2018/10/15/计算机网络/index.html">
+<meta property="og:site_name" content="校长的奇妙冒险">
+<meta property="og:description" content="去实习的公司三面时大leader问了关于请求头和响应头的问题，可能他觉得通信专业对于计算机网络应该都很精通吧…… 但是我答得很不好，所以回家之后整理了一下，发现控制台好多东西都是只到表面啊，一往深了问我就😔 请求头 Connection: keep-alive  keep-alive表示使一次TCP连接为同一用户的多次请求服务，提高了响应速度。比如图片、js、css、html都在同一台服务器上，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdn.net/20180422160129836">
+<meta property="og:image" content="https://img-blog.csdn.net/20180422164823753">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/1/5/160c570596a277bf?imageView2/0/w/1280/h/960/format/webp/ignore-error/1">
+<meta property="og:updated_time" content="2018-10-15T05:35:45.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络">
+<meta name="twitter:description" content="去实习的公司三面时大leader问了关于请求头和响应头的问题，可能他觉得通信专业对于计算机网络应该都很精通吧…… 但是我答得很不好，所以回家之后整理了一下，发现控制台好多东西都是只到表面啊，一往深了问我就😔 请求头 Connection: keep-alive  keep-alive表示使一次TCP连接为同一用户的多次请求服务，提高了响应速度。比如图片、js、css、html都在同一台服务器上，">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180422160129836">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/15/计算机网络/"/>
+
+
+
+
+
+  <title>计算机网络 | 校长的奇妙冒险</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">校长的奇妙冒险</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">だが断る</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/15/计算机网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="校长">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/blog-logo.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="校长的奇妙冒险">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-15T13:21:48+08:00">
+                2018-10-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>去实习的公司三面时大leader问了关于请求头和响应头的问题，可能他觉得通信专业对于计算机网络应该都很精通吧……</p>
+<p>但是我答得很不好，所以回家之后整理了一下，发现控制台好多东西都是只到表面啊，一往深了问我就😔</p>
+<h2 id="请求头"><a href="#请求头" class="headerlink" title="请求头"></a>请求头</h2><p><img src="https://img-blog.csdn.net/20180422160129836" alt=""></p>
+<p>Connection: keep-alive  keep-alive表示使一次TCP连接为同一用户的多次请求服务，提高了响应速度。比如图片、js、css、html都在同一台服务器上，当用户访问html时图片、js、css也构成了访问请求，如果使用一次TCP就可以解决很多请求，毫无疑问这对于减少http进程数从而降低内存使用是极好的（甄嬛脸）</p>
+<p>Upgrade-Insecure-Requests:1  浏览器告诉服务器，自己支持这种操作，也就是我能读懂你服务器发过来的上面这条信息，并且在以后发请求的时候不用http而用https，相当于在http和https中间起一个过渡作用。</p>
+<p>cookies  是服务器发送到浏览器并保存在本地的一小块数据,存储在header中，它会在浏览器下次向同一服务器再发起请求时被携带并发送到服务器上，通常，它用于告知服务端两个请求是否来自同一浏览器，如保持用户的登录状态。</p>
+<h2 id="响应头"><a href="#响应头" class="headerlink" title="响应头"></a>响应头</h2><p><img src="https://img-blog.csdn.net/20180422164823753" alt=""></p>
+<p>响应头中Cache-Control<br>客户端第一次向服务器请求数据，返回200状态码，客户端将文件和对应的响应头都换存下来。下一次客户端再请求这个文件时，会先查看上一次返回的响应头中的Cache-Control，比较过期时间与当前的请求时间，若本地资源未过期，则不再请求服务器。</p>
+<p>Cache-Control的5个值：<br>no-cache：需要先和服务器端协商，询问之前的文件是否更改，若之前的相应中存在ETag，请求时会把这个值发送给服务器端。即不直接使用本地缓存。<br>no-store：禁止浏览器缓存。<br>public：允许所有浏览器和中间代理服务器缓存<br>private：只允许浏览器缓存<br>max-age：资源经过xxx秒后失效（类似于http1.0中的expires，但max-age优先级高）</p>
+<p>响应头中Last-Modified与请求头中If-Modified-Since<br>客户端向服务器请求数据，服务器返回文件的同时也会返回这个文件上次更改的时间戳，并通过Last-Modified字段经由响应头发送给客户端。客户端将这个时间存起来。下一次客户端再请求这个文件的时候，会把上次保存起来的时间戳通过If-Modified-Since字段经由请求头发送至服务器。服务器会对比这个时间是否为文件的最后更改时间，如果是，则返回304状态码，通知客户端可以直接从本地加载文件；如果不是，返回最新的资源以及更新后的Last-Modified字段。</p>
+<p>响应头中ETag与请求头中If-None-Match<br>客户端向服务器请求数据，服务器返回文件的同时也会返回这个文件的摘要信息，并通过ETag字段经由响应头发送给客户端。客户端将这个时间存起来。下一次客户端再请求这个文件的时候，会把上次保存起来的摘要信息通过If-None-Match字段经由请求头发送至服务器。服务器会对比这个摘要信息是否为最新的，如果是，则返回304状态码，通知客户端可以直接从本地加载文件；如果不是，返回最新的资源以及更新后的ETag字段。</p>
+<h2 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP 1.0"></a>HTTP 1.0</h2><h3 id="短连接"><a href="#短连接" class="headerlink" title="短连接"></a>短连接</h3><p>只能短连接，每请求一次就建立一次连接。并且不跟踪客户端也不记录过去的请求。</p>
+<h2 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP 1.1"></a>HTTP 1.1</h2><h3 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h3><p>支持长连接，对一个html文档和其之下的js、css、图片等资源的请求总共只建立一次连接，也只关闭一次连接。每个响应都是按照请求的顺序一次返回，以保证客户端能识别每个响应是针对哪个请求。</p>
+<h3 id="增加头"><a href="#增加头" class="headerlink" title="增加头"></a>增加头</h3><p>http 1.1中新增host请求头字段，表明一台服务器可以用两个不同主机名表明这是两种服务，host表明对哪个主机名的请求。</p>
+<p>新增connection: keep-alive/close，从而实现长连接。</p>
+<p>新增身份认证、缓存相关的请求响应头。</p>
+<h2 id="HTTP-2-0"><a href="#HTTP-2-0" class="headerlink" title="HTTP 2.0"></a>HTTP 2.0</h2><h3 id="多路复用"><a href="#多路复用" class="headerlink" title="多路复用"></a>多路复用</h3><p>http 1慢的原因主要有：</p>
+<ul>
+<li>资源只能一个一个请求，必须收到上一个才能请求下一个</li>
+<li>TCP慢启动时间长<br>http 2针对此做出了改动，允许并行请求多个资源，只要将资源拆分成更小的帧，每个帧前都标好号，等到达对面时再根据号将其串起来即可。应用层里多加了二进制分帧层，headers封装到headers frame，data封装到data frame中。同时由于TCP链接减少，TCP慢启动的次数也减少了。</li>
+</ul>
+<h3 id="首部压缩"><a href="#首部压缩" class="headerlink" title="首部压缩"></a>首部压缩</h3><p>http 1的问题：</p>
+<ul>
+<li>headers不压缩直接发送</li>
+<li>每次都要发很多不频繁改动的headers，浪费<br>http 2客户端和服务器端共同维护一份静态字典和一份动态字典，都是headers键值对，本次与上一次请求的headers相同的部分不再重新发送，不同的部分添加到动态字典中，发送headers帧的时候只发变动的。<br><img src="https://user-gold-cdn.xitu.io/2018/1/5/160c570596a277bf?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt=""><h3 id="服务器主动推送"><a href="#服务器主动推送" class="headerlink" title="服务器主动推送"></a>服务器主动推送</h3>http 1的问题：</li>
+<li>每一个资源都要明确请求<br>http 2允许服务器端在浏览器请求之前，主动推送资源给浏览器，即一个请求对多个响应。比如浏览器请求html页面，服务器判断浏览器可能会需要logo和css样式表，所以页面连同这些资源一齐响应，加快了响应速度。</li>
+</ul>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><p>https = http + SSL(安全套接字层)<br>http是是明文传输，https是安全的http，在应用层多加了SSL。<br>http的端口是80，https的端口是443。</p>
+<h3 id="HTTPS主要流程"><a href="#HTTPS主要流程" class="headerlink" title="HTTPS主要流程"></a>HTTPS主要流程</h3><p>客户端发起https请求；<br>服务器端从CA申请一个证书，这个证书其实就是一对公钥和私钥；<br>服务器发给客户端公钥；<br>客户端验证公钥的过期时间和证书机构，如果满足条件，则生成一段随机值，用公钥进行加密，发给服务器端；<br>服务器端用私钥解密出会话密钥（就是那串随机值），再将内容与会话密钥进行对称加密（同一个密钥可以用来加密和解密就叫做对称加密）发给客户端；<br>客户端用会话密钥解密。</p>
+<h2 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h2><p>200 完成<br>204 也是成功，只是仅有响应头没有传过来资源<br>301 是永久重定向。搜索引擎抓到新内容同时网址也是新的<br>302 是暂时重定向。搜索引擎抓到新内容但是网址是旧的<br>304 是服务器未更新资源，所以浏览器直接使用缓存的资源吧<br>307 是如果客户端请求方法是get或head，可以直接向重定向后得到的新url发请求，如果不是，则必须让客户端先确认要不要跳转到新url<br>400 请求有问题，服务器无法识别<br>401 没有权限却想访问一个受密码保护的页面<br>403 禁止访问<br>404 not found<br>500 服务器代码有bug<br>503 服务器正忙</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/很硬/" rel="tag"># 很硬</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/14/秋が近づいて/" rel="next" title="秋が近づいて">
+                <i class="fa fa-chevron-left"></i> 秋が近づいて
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MDMwMC8xNjgyNw=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/blog-logo.jpg"
+                alt="校长" />
+            
+              <p class="site-author-name" itemprop="name">校长</p>
+              <p class="site-description motion-element" itemprop="description">吃好喝好，长生不老</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#请求头"><span class="nav-number">1.</span> <span class="nav-text">请求头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#响应头"><span class="nav-number">2.</span> <span class="nav-text">响应头</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-1-0"><span class="nav-number">3.</span> <span class="nav-text">HTTP 1.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#短连接"><span class="nav-number">3.1.</span> <span class="nav-text">短连接</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-1-1"><span class="nav-number">4.</span> <span class="nav-text">HTTP 1.1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#长连接"><span class="nav-number">4.1.</span> <span class="nav-text">长连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加头"><span class="nav-number">4.2.</span> <span class="nav-text">增加头</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP-2-0"><span class="nav-number">5.</span> <span class="nav-text">HTTP 2.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多路复用"><span class="nav-number">5.1.</span> <span class="nav-text">多路复用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首部压缩"><span class="nav-number">5.2.</span> <span class="nav-text">首部压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器主动推送"><span class="nav-number">5.3.</span> <span class="nav-text">服务器主动推送</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">6.</span> <span class="nav-text">HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS主要流程"><span class="nav-number">6.1.</span> <span class="nav-text">HTTPS主要流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态码"><span class="nav-number">7.</span> <span class="nav-text">状态码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-paw"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">校长</span>
+
+  
+</div>
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("10/14/2018 12:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+-->
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!--崩溃欺骗-->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- 背景 -->
+  <!-- 图片轮播js文件cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+  <!-- 自定义的js文件 -->
+  <script type="text/javascript" src="/js/src/custom.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/chitose.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacityDefault":1},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
